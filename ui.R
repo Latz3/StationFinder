@@ -74,7 +74,7 @@ shinyUI(fluidPage(
         "shipsbydisplacement",
         "Displacement",
         choices = list("<500" =as.character(newships[newships$Displacement < 500, "Label"]),
-                       "500-1500" = as.character(newships[newships$Displacement < 500 & ships$Displacement <1500, "Label"]),
+                       "500-1500" = as.character(newships[newships$Displacement < 500 & newships$Displacement <1500, "Label"]),
                        ">1500" = as.character(newships[newships$Displacement > 1500, "Label"]))
       ),
       actionButton("subshipsdisplacement","Show Ships by Displacement")
