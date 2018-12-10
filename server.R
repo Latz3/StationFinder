@@ -18,6 +18,11 @@ cn <- cn[!is.na(cn)]
 data <- data.frame(name = cn, color = ceiling(runif(length(cn), 1, 50)))
 newships = read.csv("ships.csv", header=TRUE,sep=";")
 adlab = read.csv("admiral_labels.csv", header=TRUE,sep=";")
+
+#shiny debug
+options(shiny.trace=TRUE)
+options(shiny.reactlog=TRUE)
+
 # Define server logic
 
 shinyServer(function(input, output){
