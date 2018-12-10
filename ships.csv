@@ -1,0 +1,104 @@
+Label;P_ID;S_ID;Station;Von;Bis;Displacement;Hull;Propulsion;Lat;Long;ColVal
+Tyne;1;S3;Mediterranean;1837;1839;600;Wooden;Sail;36;14;blue
+Phoenix;1;S4;Mediterranean;1839;1840;812;Wooden;Paddle;36;14;yellow
+Hydra;1;S5;Mediterranean;1840;1850;817;Wooden;Paddle;36;14;yellow
+Wellington;1;S11;Plymouth;1859;1860;1756;Wooden;Sail;50;-4;blue
+Ajax;1;S9;Devonport;1856;1858;1761;Wooden;Screw;50;-4;red
+Dublin;1;S1;South America;1831;1834;1772;Wooden;Sail;-33;-72;blue
+Arrogant;1;S6;Lisbon;1850;1852;1872;Wooden;Screw;39;-9;red
+Asia;1;S2;Mediterranean;1836;1837;2289;Wooden;Sail;36;14;blue
+Colossus;1;S7;NA and West Indies;1854;1856;2590;Wooden;Sail;32;-65;blue
+Royal George;1;S8;Crimea;1856;1856;2616;Wooden;Screw;45;34;red
+Exmouth;1;S10;Plymouth;1858;1859;3100;Wooden;Screw;50;-4;red
+Savage;2;S12;Irish Station;1831;1832;227;Wooden;Sail;52;-8;blue
+Pelorus;2;S16;Australia;1839;1840;385;Wooden;Sail;-34;151;blue
+Alligator;2;S15;Australia;1837;1839;500;Wooden;Sail;-34;151;blue
+Alligator 2;2;S15;East-Indies;1840;1841;500;Wooden;Sail;69;80;blue
+Nimrod;2;S13;Spain;1832;1833;502;Wooden;Sail;39;-9;blue
+Nimrod 2;2;S13;Spain/Portugal;1833;1836;502;Wooden;Sail;39;-9;blue
+Calliope;2;S17;East-Indies;1841;1850;717;Wooden;Sail;69;80;blue
+Thetis;2;S18;South-east coast of America;1850;1854;1524;Wooden;Sail;-52;-60;blue
+Minden;2;S14;Lisbon;1836;1837;1721;Wooden;Sail;39;-9;blue
+London;2;S19;Mediterranean;1855;1856;2590;Wooden;Sail;36;14;blue
+Leander;3;S20;Portsmouth;1852;1854;1987;Wooden;Sail;51;-1;blue
+Princess Charlotte;3;S23;East Indies and China;1857;1864;2443;Wooden;Sail;22;114;blue
+Rodney;3;S21;Mediterranean;1854;1855;2590;Wooden;Sail;36;14;blue
+St Jean d'acres;3;S22;Mediterranean;1855;1857;3199;Wooden;Screw;36;14;red
+Scout;4;S24;East Indies;1846;1852;488;Wooden;Sail;69;80;blue
+Iris;4;S26;Australia;1856;1859;906;Wooden;Sail;-34;151;blue
+Iris 2;4;S26;Australian Squadron;1859;1860;906;Wooden;Sail;-34;151;blue
+Furious;4;S25;Mediterranean;1852;1856;1287;Wooden;Paddle;36;14;yellow
+Saturn;4;S27;Pembroke Dockyard;1862;1866;1646;Wooden;Sail;51.69161;-4.94036;blue
+Belvidera;5;S28;Mediterranean;1841;1845;946;Wooden;Sail;36;14;blue
+Vixen;5;S29;Western Squadron;1847;1853;1054;Wooden;Paddle;50;-4;yellow
+Dauntless;5;S30;Channel;1853;1857;1453;Wooden;Screw;51;-1;red
+Hero;5;S31;Channel Squadron;1861;1862;3148;Wooden;Screw;50;-4;red
+Conway;6;S35;Queenstown;1857;1857;652;Wooden;Sail;52;-8;blue
+Styx;6;S32;West coast of Africa;1846;1848;1054;Wooden;Paddle;8;-13;yellow
+Amphion;6;S34;NA and West Indies;1856;1857;1474;Wooden;Screw;32;-65;red
+Portland;6;S33;Pacific;1850;1856;1476;Wooden;Sail;-33;-72;blue
+London 2;6;S19;Mediterranean;1859;1863;2590;Wooden;Screw;36;14;red
+Nile;6;S36;Queenstown;1858;1858;2598;Wooden;Sail;52;-8;blue
+Curacoa;7;S37;South America;1843;1844;956;Wooden;Sail;-33;-72;blue
+Gorgon;7;S38;South America;1844;1847;1111;Wooden;Paddle;-33;-72;yellow
+Bulldog;7;S39;Mediterranean;1847;1850;1124;Wooden;Paddle;36;14;yellow
+Amphion 2;7;S35;Baltic;1853;1856;1474;Wooden;Screw;57;18;red
+Wellington 2;7;S11;Plymouth;1860;1860;1756;Wooden;Sail;50;-4;blue
+Excellent;7;S42;Royal Naval College;1863;1866;2289;Wooden;Sail;51.476852;-0.0005;blue
+Sans Pareil;7;S40;Crimea;1856;1858;2339;Wooden;Screw;45;34;red
+Indus;7;S41;Devonport;1860;1863;2653;Wooden;Sail;50;-4;blue
+Cleopatra;8;S43;East coast of Africa;1844;1847;918;Wooden;Sail;-6;39;blue
+Tribune;8;S44;Pacific;1858;1860;1570;Wooden;Screw;-33;-72;red
+Asia 2;8;S2;Pacifc;1847;1850;2289;Wooden;Sail;-33;-72;blue
+Asia 3;8;S2;Pacific;1850;1858;2289;Wooden;Sail;-33;-72;blue
+Neptune;8;S45;Mediterranean;1861;1862;2694;Wooden;Screw;36;14;red
+Edgar;8;S46;Channel Squadron;1863;1865;3094;Wooden;Screw;50;-4;red
+Fly;9;S48;East Indies;1841;1846;485;Wooden;Sail;69;80;blue
+Sphinx;9;S49;East Indies;1850;1856;1056;Wooden;Paddle;22;114;yellow
+Highflyer;9;S50;East Indies and China;1856;1860;1153;Wooden;Screw;69;80;red
+Castor;9;S47;Mediterranean;1838;1841;1293;Wooden;Sail;36;14;blue
+Hastings;9;S52;Queenstown;1862;1864;1763;Wooden;Screw;52;-8;red
+Aboukir;9;S51;Channel Squadron;1861;1862;3080;Wooden;Sail;50;-4;blue
+Isabella;10;S57;Jones Sound;1852;1853;149;Wooden;Sail;76;-86;blue
+Comus;10;S55;Uruguay;1845;1847;462;Wooden;Sail;-35;-56;blue
+Ringdove;10;S56;East Indies;1847;1852;492;Wooden;Sail;69;80;blue
+Samarang;10;S53;East Indies;1842;1845;500;Wooden;Sail;69;80;blue
+Pheonix;10;S4;Barrow Strait;1852;1853;809;Wooden;Screw;74;-96;red
+Pheonix 2;10;S4;Barrow Strait;1854;1854;809;Wooden;Screw;74;-96;red
+Firebrand;10;S58;Black Sea;1855;1856;1190;Wooden;Paddle;45;34;yellow
+Sidon;10;S59;Mediterranean;1856;1856;1329;Wooden;Paddle;36;14;yellow
+Eagle;10;S54;South-east coast of America;1845;1845;1706;Wooden;Sail;-52;-60;blue
+Majestic;10;S60;Liverpool;1861;1864;2589;Wooden;Screw;53;-3;red
+Prince Consort;10;S61;Channel and the Mediterranean;1866;1868;4045;Wooden;Screw;36;14;red
+Volcano;11;S62;West coast of Africa;1851;1860;720;Wooden;Paddle;8;-13;yellow
+Arethusa;11;S65;Mediterranean;1867;1869;2132;Wooden;Sail;36;14;blue
+Victory;11;S63;Portsmouth;1860;1863;2142;Wooden;Sail;51;-1;blue
+Gibraltar;11;S64;Mediterranean;1864;1867;3716;Wooden;Screw;36;14;red
+Ringdove 2;12;S56;West coast of Africa;1844;1845;429;Wooden;Sail;8;-13;blue
+Volage;12;S66;NA and West Indies;1842;1843;521;Wooden;Sail;32;-65;blue
+Virago;12;S69;Pacific;1851;1853;1059;Wooden;Paddle;-33;-72;yellow
+Firebrand 2;12;S58;Black Sea;1854;1855;1190;Wooden;Paddle;45;34;yellow
+Dragon;12;S70;Baltic;1855;1857;1270;Wooden;Paddle;57;18;yellow
+Grampus;12;S68;Pacific;1845;1847;1656;Wooden;Sail;-33;-72;blue
+Illustrious;12;S67;NA and West Indies;1843;1844;1746;Wooden;Sail;32;-65;blue
+Wellesley;12;S73;Chatham;1866;1870;1746;Wooden;Sail;51;0.52213;blue
+Impregnable;12;S71;Plymouth;1857;1860;2406;Wooden;Sail;50;-4;blue
+Marlborough;12;S72;Mediterranean;1860;1863;3853;Wooden;Screw;36;14;red
+Sappho;13;S74;NA and West Indies;1850;1854;428;Wooden;Sail;32;-65;blue
+Niger;13;S77;East Indies and China;1856;1858;1013;Wooden;Screw;22;114;red
+Driver;13;S75;Baltic;1854;1855;1055;Wooden;Paddle;57;18;yellow
+Horatio;13;S76;Sheerness;1855;1856;1090;Wooden;Screw;51;0.52213;red
+Cumberland;13;S79;Sheerness;1866;1869;2214;Wooden;Sail;51;0.52213;blue
+Warrior;13;S78;Channel Squadron;1861;1864;6109;Iron;Screw;50;-4;grey
+Harlequin;14;S83;Mediterranean;1848;1852;433;Wooden;Sail;36;14;blue
+Cormorant;14;S82;Pacific;1847;1847;1054;Wooden;Paddle;-33;-72;yellow
+Thalia;14;S80;Pacific;1842;1844;1082;Wooden;Sail;-33;-72;blue
+Brisk;14;S84;NA and West Indies;1853;1854;1087;Wooden;Screw;32;-65;red
+Pelorus 2;14;S16;East Indies and China;1857;1862;1462;Wooden;Screw;22;114;red
+Meteor;14;S85;Crimea;1855;1856;1469;Wooden;Screw;45;34;red
+Victory 2;14;S63;Portsmouth;1867;1868;2142;Wooden;Sail;51;-1;blue
+Collingwood;14;S81;Pacific;1844;1847;2589;Wooden;Sail;-33;-72;blue
+Ferret;15;S86;West coast of Africa;1852;1859;358;Wooden;Sail;8;-13;blue
+Hogue;15;S87;Greenrock;1859;1865;1750;Wooden;Sail;56;-5;blue
+Arethusa 2;15;S65;Mediterranean;1865;1867;2132;Wooden;Sail;36;14;blue
+Bellerophon;15;S88;Channel Squadron;1867;1872;4270;Iron;Screw;50;-4;grey
