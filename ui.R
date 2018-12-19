@@ -1,17 +1,11 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(datamaps)
 library(magrittr)
 library(countrycode)
 library(devtools)
+library(rdrop2)
+library(digest)
+
 #shiny debug options
 options(shiny.trace=TRUE)
 options(shiny.reactlog=TRUE)
@@ -47,12 +41,12 @@ shinyUI(fluidPage(
       #  choices = c("Hull", "Propulsion", "Displacement") ),
       
       # actionButton("sub", "Show All"),
-      actionButton("debugsa", "Debug Button SA"),
+      actionButton("debugsa", "Show All"),
       
-      actionButton(
-        "delete",
-        "Clear map"
-      ),
+      #actionButton(
+      #  "delete",
+      #  "Clear map"
+      #),
       
       
       selectInput(
@@ -86,7 +80,57 @@ shinyUI(fluidPage(
       tabsetPanel(
         tabPanel("Map", datamapsOutput("map")), 
         
-        tabPanel("Table", tableOutput("view"))
+        tabPanel("Table", tableOutput("view")),
+        tabPanel("File Upload",
+                 fileInput("file1", "Choose CSV File",
+                           multiple = FALSE,
+                           accept = c("text/csv",
+                                      "text/comma-separated-values,text/plain",
+                                      ".csv")),
+                 actionButton("upload", "Upload File"),
+
+                 # Horizontal line ----
+                 tags$hr(),
+
+                 # Input: Checkbox if file has header ----
+                 checkboxInput("header", "Header", TRUE),
+
+                 # Input: Select separator ----
+                 radioButtons("sep", "Separator",
+                              choices = c(Comma = ",",
+                                          Semicolon = ";",
+                                          Tab = "\t"),
+                              selected = ","),
+
+                 # Input: Select quotes ----
+                 radioButtons("quote", "Quote",
+                              choices = c(None = "",
+                                          "Double Quote" = '"',
+                                          "Single Quote" = "'"),
+                              selected = '"'),
+
+                 # Horizontal line ----
+                 tags$hr(),
+
+                 # Input: Select number of rows to display ----
+                 radioButtons("disp", "Display",
+                              choices = c(Head = "head",
+                                          All = "all"),
+                              selected = "head"),
+
+
+
+                 tableOutput("contents")),
+        tabPanel("Contributions",
+                 tags$div(
+                    tags$p("Ahoy! Thank you for checking out the StationFinder project!\n"),
+                    tags$p("If you want to contribute to this project,
+                  you can follow the tutorial in the Contribute Section of the github repository:"),
+                    tags$a(href = "https://github.com/Latz3/StationFinder", "StationFinder - Contribute")
+                 )
+                 ),
+                
+        id = "MainOut"
       )
     )
   )

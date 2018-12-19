@@ -1,23 +1,21 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(datamaps)
 library(magrittr)
 library(countrycode)
 library(devtools)
+library(rdrop2)
+library(digest)
+
 #load data
 cn <- unique(countrycode::codelist$iso3c)
 cn <- cn[!is.na(cn)]
 data <- data.frame(name = cn, color = ceiling(runif(length(cn), 1, 50)))
 newships = read.csv("ships.csv", header=TRUE,sep=";")
 adlab = read.csv("admiral_labels.csv", header=TRUE,sep=";")
+
+
+#dropacc auth
+token = readRDS("droptoken.rds")
 
 #shiny debug
 options(shiny.trace=TRUE)
@@ -27,16 +25,6 @@ options(shiny.reactlog=TRUE)
 
 shinyServer(function(input, output){
  
-  
-  arc <- reactive({
-    
-    data.frame( fromlong = strsplit( input$from, "~" )[[1]][1],
-                fromlat = strsplit( input$from, "~" )[[1]][2],
-                tolong = strsplit( input$to, "~" )[[1]][1],
-                tolat = strsplit( input$to, "~" )[[1]][2])
-  })
-  
-  
   
   updated_data <- reactive({
     data.frame(pid= input$officerSelect
@@ -91,29 +79,39 @@ shinyServer(function(input, output){
     
   })
   output$map <- renderDatamaps({
-    datamaps(responsive = TRUE) %>%
-      config_geo(border.color = "lightgreen",
+    datamaps() %>%
+      config_geo(popup.on.hover = FALSE,
+                 highlight.on.hover = FALSE,
+                 border.color = "lightgreen",
                  border.opacity = 0) %>%
       add_data(newships) %>%
-      add_bubbles(Long, Lat, log(Displacement)+5, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey"))
+      add_bubbles(Long, Lat, radius = 10, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey"))
   })
-  
+  showTab(inputId = "MainOut", target = "Table")
   output$view <- renderTable({
     head(newships, n=20)
   })
+  #output$pie <- renderPlot({
+  #  blub = as.data.frame(table(paste(newships$Hull, newships$Propulsion, sep="~")))
+  #  pie(blub$Freq,labels = blub$Var1, main = "Distribution of Ship Characteristics")
+  #})
+  
   observeEvent(input$update, {
     
     output$map <- renderDatamaps({
       data %>%
-        datamaps(responsive = TRUE) %>%
-        config_geo(border.opacity = 0,
+        datamaps() %>%
+        config_geo(popup.on.hover = FALSE,
+                   highlight.on.hover = FALSE,
+                   border.opacity = 0,
                    border.color = "lightgreen") %>%
         
         add_data(newships[newships$P_ID == updated_data()$pid,]) %>%
-        add_bubbles(Long, Lat, log(Displacement)+5, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>%
+        add_bubbles(Long, Lat, radius = 10, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>%
         config_bubbles(fill.opacity = 0,
                        border.opacity = 0.2)
     })
+    showTab(inputId = "MainOut", target = "Table")
     output$view <- renderTable({
       head(newships[newships$P_ID == updated_data()$pid,], n=20)
     }) 
@@ -131,50 +129,102 @@ shinyServer(function(input, output){
   observeEvent(input$subshipname, {
     datamapsProxy("map") %>%
       add_data(updateshipname()) %>% # pass updated data
-      update_bubbles(Long, Lat, Radius,ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>% # update
+      update_bubbles(Long, Lat, radius = 10,ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>% # update
       config_bubbles(popup.on.hover = TRUE,
                      highlight.on.hover = TRUE,
                      highlight.border.width = 3)
+    hideTab(inputId = "MainOut", target = "Table")
   })
   
   observeEvent(input$subshipsprop, {
     datamapsProxy("map") %>%
       add_data(updateprop()) %>% # pass updated data
-      update_bubbles(Long, Lat, Radius,ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement),colors = c("blue", "red", "yellow", "grey")) %>%
+      update_bubbles(Long, Lat, radius = 10,ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>%
       config_bubbles(popup.on.hover = TRUE,
                      highlight.on.hover = TRUE)# update
+    hideTab(inputId = "MainOut", target = "Table")
   })
   observeEvent(input$subshipsdisplacement, {
     datamapsProxy("map") %>%
       add_data(updatedisplacement()) %>% # pass updated data
-      update_bubbles(Long, Lat, Radius, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement),colors = c("blue", "red", "yellow", "grey")) %>%
+      update_bubbles(Long, Lat, radius = 10, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Shipname, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) %>%
       config_bubbles(popup.on.hover = TRUE,
                      highlight.on.hover = TRUE)# update
+    hideTab(inputId = "MainOut", target = "Table")
   })
   observeEvent(input$debugsa, {
     output$map <- renderDatamaps({
-      data %>%
-        datamaps(responsive = TRUE) %>%
-        config_geo(border.opacity = 0,
-                   border.color = "lightgreen") %>%
+      datamaps(responsive = TRUE) %>%
+        config_geo(popup.on.hover = FALSE,
+                   highlight.on.hover = FALSE,
+                   border.color = "lightgreen",
+                   border.opacity = 0) %>%
         add_data(newships) %>%
-        add_bubbles(Long, Lat, log(Displacement)+5, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey")) #%>%
-      #config_bubbles(fill.opacity = 0.5)
+        add_bubbles(Long, Lat, radius = 10, ColVal, sprintf("Ship: %s<br/>Station: %s<br/>Displacement(BM): %.0f",Label, Station, Displacement), colors = c("blue", "red", "yellow", "grey"))
+    })
+    showTab(inputId = "MainOut", target = "Table")
+    output$view <- renderTable({
+      head(newships, n=20)
     })
   })
+  # observeEvent(input$delete, {
+  #   output$map <- renderDatamaps({
+  #     data %>%
+  #       datamaps(responsive = TRUE) %>%
+  #       config_geo(border.opacity = 0,
+  #                  border.color = "lightgreen")
+  #     
+  #   })
+  # })
   
-  observeEvent(input$delete, {
-    output$map <- renderDatamaps({
-      data %>%
-        datamaps(responsive = TRUE) %>%
-        config_geo(border.opacity = 0,
-                   border.color = "lightgreen")
+  output$contents <- renderTable({
+    
+    # input$file1 will be NULL initially. After the user selects
+    # and uploads a file, head of that data file by default,
+    # or all rows if selected, will be shown.
+    
+    req(input$file1)
+    
+    # when reading semicolon separated files,
+    # having a comma separator causes `read.csv` to error
+    tryCatch(
+      {
+        df <- read.csv(input$file1$datapath,
+                       header = input$header,
+                       sep = input$sep,
+                       quote = input$quote)
       
+      
+      },
+      error = function(e) {
+        # return a safeError if a parsing error occurs
+        stop(safeError(e))
+      }
+    )
+    observeEvent(input$upload, {
+      token = drop_auth()
+      saveRDS(token, "droptoken.rds")
+      token = readRDS("droptoken.rds")
+      
+      #filePath <- file.path(tempdir(), "newdata.csv")
+      filename = paste("newdata",as.integer(Sys.time()),".csv", sep="")
+      outfile = write.csv(df, filename, row.names = FALSE)
+      file.exists(filename)
+      drop_upload(filename ,path = "drop_test")
+      
+      #fileName <- sprintf("newdata_%s.csv", as.integer(Sys.time())),
+      #                    write.csv(newships, fileName, row.names = FALSE, quote = TRUE)
+      #                    token <- readRDS("droptoken.rds")
+      #                    drop_acc(dtoken = token)    
+      #                    drop_upload(fileName, dest = "drop_test",dtoken=token) 
     })
-  })
+    
+      return(df)
+    
+    
+  })  
   
-  
-  
+
   
   
 })
