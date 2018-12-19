@@ -24,5 +24,5 @@ Here's how to do it:
   * Nachname defines the last name of the officer
   * Label defines the combined name of the officer
 
-4. Finally, send the files to sfprojectws2018@googlemail.com. I will then add the data to the existing tables.\
+4. Finally, upload the csv files via the File Upload Tab in the app. I will then add the data to the existing tables.\
  Thanks :)
