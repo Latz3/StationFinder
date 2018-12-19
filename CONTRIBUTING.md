@@ -15,7 +15,7 @@ Here's how to do it:
   * Propulsion defines the method of propulsion
   * Lat defines the latitude of the station
   * Long defines the longitude of the station
-  * ColVal defines the color for the bubbles (the colors follow this schema:)
+  * ColVal defines the color for the bubbles (initially left blank)
 
 3. To add officer data, you need to create a csv-File named "newoffdata.csv" with the following columns:\
   P_ID	Vorname	Nachname	Label
