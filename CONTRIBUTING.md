@@ -1,4 +1,4 @@
-## How to contribute to:
+## How to contribute:
 Thank you for Contributing to the StationFinder project.\
 Here's how to do it:
 1. Gather data from Navy Lists
@@ -24,5 +24,5 @@ Here's how to do it:
   * Nachname defines the last name of the officer
   * Label defines the combined name of the officer
 
-4. Finally, send the files to sfprojectws2018@googlemail.com. I will then add the data to the existing tables.
+4. Finally, send the files to sfprojectws2018@googlemail.com. I will then add the data to the existing tables.\
  Thanks :)
