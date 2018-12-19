@@ -1,6 +1,6 @@
 # StationFinder 1.0
 
-One Paragraph of project description goes here
+THe StationFinder project was built to offer a graphic visualization for the data gathered from Navy Lists of the English Royal Navy of the years 1821 to 1884.
 
 ## Getting Started
 
@@ -11,9 +11,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+*
 
 ## Contributing
 
