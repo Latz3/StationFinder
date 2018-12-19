@@ -1,8 +1,8 @@
 ## How to contribute to:
-Thank you for Contributing to the StationFinder project.
-Here's how to do it:
+Thank you for Contributing to the StationFinder project.\
+Here's how to do it:\
 1. Gather data from Navy Lists
-2. To add ship data, you need to create a csv-File named "newshipdata.csv" with the following columns:
+2. To add ship data, you need to create a csv-File named "newshipdata.csv" with the following columns:\
   Label	P_ID	S_ID	Station	Von	Bis	Displacement	Hull	Propulsion	Lat	Long	ColVal
   * In Label, the name of the ship is given.
   * P_ID defines the commanding officer of the ship
